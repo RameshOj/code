@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    background-color: gray;
+}
+
+#drum-machine {
+    width: 450px;
+    height: 496px;
+    background-color: lightgray;
+    margin: auto;
+    margin-top: 70px;
+    border: 5px solid yellow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#head-right {
+    background-color: lightgray;
+    font-size:  24px;
+    font-weight: 800;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: flex-end;
+    padding: 12px;
+    width: 426px;
+}
+
+#buttons-container {
+    display: inline-block;
+    width: 55%;
+    background-color: lightgray;
+    margin: 10px;
+}
+
+.drum-pad {
+    width: 50px;
+    height: 50px;
+    margin: 16px;
+    border: 0 2px 2px 0 solid black;
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px black;
+    font-size: 19px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.clip {
+    width: 50px;
+    height: 50px;
+}
+
+#label {
+    margin-top: 10px;
+    background-color: lightgray;
+    color: black;
+    font-size:  24px;
+    font-weight: 800;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#toggle-on {
+    width:100px;
+    height: 35px; 
+    margin-top: 10px;
+    background-color: black;
+    border: none;
+    outline: none;
+    display: flex;
+    padding: 5px;
+    justify-content: flex-end;
+}
+
+#toogle-off {
+    width:100px;
+    height: 35px; 
+    margin-top: 10px;
+    background-color: black;
+    border: none;
+    outline: none;
+    padding: 2px 5px;
+}
+
+#switch {
+    width: 40px;
+    height: 25px;
+    background-color: blue;
+}
+
+#display {
+    margin-top: 10px;
+    background-color: gray;
+    color: black;
+    font-size:  24px;
+    padding: 8px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+}
