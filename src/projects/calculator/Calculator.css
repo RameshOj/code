@@ -1,98 +1,113 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 #calculator-container {
-    width:100vw;
-    height: 100vh;
-    background-color: rgb(173, 170, 170);
-    padding-top: 100px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(173, 170, 170);
+  padding-top: 100px;
 }
 
 #calculator {
-    width: 320px;
-    height: 474px;
-    background-color: black;
-    margin: auto;
-    padding-top: 1px;
+  width: 320px;
+  height: 474px;
+  background-color: black;
+  margin: auto;
+  padding-top: 1px;
 }
 
-#display {
-    width: calc(100%- 12px);
-    height: calc(80px - 12px);
-    margin: 6px;
+#displayCont {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: calc(100%- 12px);
+  height: calc(80px - 12px);
+  margin: 6px;
+}
+.que {
+  color: orange;
+  font-size: 22px;
+  float: right;
+  margin: 4px;
+}
+
+.result {
+  color: rgb(157, 246, 210);
+  font-size: 26px;
+  float: right;
+  margin: 4px;
 }
 
 #buttons {
-    width: calc(100%- 12px);
-    height: calc(398px - 12px);
-    margin: 6px;
+  width: calc(100%- 12px);
+  height: calc(398px - 12px);
+  margin: 6px;
 }
 
 #buttons > button:hover {
-    cursor: pointer;
-    border: 1px dashed rgb(173, 170, 170);
+  cursor: pointer;
+  border: 1px dashed rgb(173, 170, 170);
 }
 
-
 .red {
-    height: 75px;
-    width: 152px;
-    margin: 1px;
-    background-color: brown;
-    border: none;
-    outline: none;
-    color:aliceblue;
-    font-size: 28px;
-    font-weight: 800;
+  height: 75px;
+  width: 152px;
+  margin: 1px;
+  background-color: brown;
+  border: none;
+  outline: none;
+  color: aliceblue;
+  font-size: 28px;
+  font-weight: 800;
 }
 
 .calc {
-    height: 75px;
-    width: 75px;
-    margin: 1px;
-    background-color: gray;
-    border: none;
-    outline: none;
-    color:aliceblue;
-    font-size: 28px;
-    font-weight: 800;
+  height: 75px;
+  width: 75px;
+  margin: 1px;
+  background-color: gray;
+  border: none;
+  outline: none;
+  color: aliceblue;
+  font-size: 28px;
+  font-weight: 800;
 }
 
 .num {
-    height: 75px;
-    width: 75px;
-    margin: 1px;
-    background-color: rgb(110, 108, 108);
-    border: none;
-    outline: none;
-    color:aliceblue;
-    font-size: 28px;
-    font-weight: 800;  
+  height: 75px;
+  width: 75px;
+  margin: 1px;
+  background-color: rgb(110, 108, 108);
+  border: none;
+  outline: none;
+  color: aliceblue;
+  font-size: 28px;
+  font-weight: 800;
 }
 
 .num-big {
-    height: 75px;
-    width: 152px;
-    margin: 1px;
-    background-color:  rgb(110, 108, 108);
-    border: none;
-    outline: none;
-    color:aliceblue;
-    font-size: 28px;
-    font-weight: 800;
+  height: 75px;
+  width: 152px;
+  margin: 1px;
+  background-color: rgb(110, 108, 108);
+  border: none;
+  outline: none;
+  color: aliceblue;
+  font-size: 28px;
+  font-weight: 800;
 }
 
 .equal {
-    width: 75px;
-    height: 152px;
-    margin: 1px;
-    background-color: blue;
-    border: none;
-    outline: none;
-    color:aliceblue;
-    font-size: 28px;
-    font-weight: 800;
-    position: absolute;
+  width: 75px;
+  height: 152px;
+  margin: 1px;
+  background-color: blue;
+  border: none;
+  outline: none;
+  color: aliceblue;
+  font-size: 28px;
+  font-weight: 800;
+  position: absolute;
 }

@@ -1,27 +1,87 @@
-import { MouseEventHandler, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import "./Calculator.css";
 const Calculator = () => {
-  const [string, setString] = useState<string>("");
-  const [lastOperation, setOperation] = useState<number>(0);
-  const stringEquator = (str) => {
-    const strArr = str.split("");
-    for(let i = 0; i<strArr.length; i++) {
+  const [arr, setArr] = useState<string[]>([]);
+  const [num, setNum] = useState<string>("");
+  const [display, setDisplay] = useState<string>("");
+  const [result, setResult] = useState<number>(0);
+  const [flag, setFlag] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (flag) equaliserFunc();
+  }, [arr.length, flag]);
+
+  const calculator = (oprtn: string) => {
+    const indx = arr.indexOf(oprtn);
+    const prevIndx = indx - 1;
+    const nextIndx = indx + 1;
+    let res = "";
+    if (oprtn === "/") {
+      res = (Number(arr[prevIndx]) / Number(arr[nextIndx])).toString();
+      console.log(res, " res");
+    } else if (oprtn === "X") {
+      res = (Number(arr[prevIndx]) * Number(arr[nextIndx])).toString();
+      console.log(res, " res");
+    } else if (oprtn === "+") {
+      res = (Number(arr[prevIndx]) + Number(arr[nextIndx])).toString();
+      console.log(res, " res");
+    } else if (oprtn === "-") {
+      res = (Number(arr[prevIndx]) - Number(arr[nextIndx])).toString();
+      console.log(res, " res");
+    }
+    const prevArr = arr.slice(0, prevIndx);
+    const nextArr = arr.slice(nextIndx + 1, arr.length);
+    setArr([...prevArr, res, ...nextArr]);
+    return;
+  };
+
+  const equaliserFunc = (): void => {
+    if (arr.length === 1 && arr.length % 2 !== 0) {
+      setResult(JSON.parse(arr[0]));
       return;
     }
-  }
-  const clickHandler = (butn: string, oprtn: string) => {
-    if(oprtn!=="equal") {
-      setString(string+butn);
-    } else {
-      stringEquator(string)
+    if (arr.includes("/")) {
+      calculator("/");
+    } else if (arr.includes("X")) {
+      calculator("X");
+    } else if (arr.includes("+")) {
+      calculator("+");
+    } else if (arr.includes("-")) {
+      calculator("-");
     }
   };
+
+  const clickHandler = (butn: string, variant: string) => {
+    setDisplay(display + butn);
+    if (butn === "=") {
+      setArr([...arr, num]);
+      setFlag(true);
+      setNum("");
+      return;
+    } else if (variant === "num" || variant === "num-big") {
+      setNum(num + butn);
+    } else if (num.length && variant === "calc") {
+      setArr([...arr, num, butn]);
+      setNum("");
+    } else if (variant === "red") {
+      setDisplay("");
+      setArr([]);
+      setFlag(false);
+      setNum("");
+      setResult(0);
+    }
+  };
+
   return (
     <div id="calculator-container">
       <div id="calculator">
-        <div id="display">
-          <div></div>
-          <div></div>
+        <div id="displayCont">
+          <div id="display" className="que">
+            {display}
+          </div>
+          <div id="display" className="result">
+            {result}
+          </div>
         </div>
         <Buttons buttonClickHandler={clickHandler} />
       </div>
@@ -60,7 +120,7 @@ const Buttons = (props: ButtonsProp) => {
           <Button
             id={elem.id}
             variant={elem.variant}
-            onClick={() => props.buttonClickHandler(elem.id, elem.variant)}
+            onClick={() => props.buttonClickHandler(elem.text, elem.variant)}
             text={elem.text}
           />
         );
