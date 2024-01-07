@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./DrumMachine.css";
+import styles from "./DrumMachine.module.css";
 
 const list: Array<OBJ> = [
   { Q: "https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3" },
@@ -42,26 +42,41 @@ const DrumMachine = () => {
     });
   };
 
+  const switchHandler = () => {
+    setOn(!on);
+    setName("");
+  };
+
+  const home = `< Home`;
+
   return (
-    <div
-      id="drum-machine"
-      onKeyDown={(e) => setKey(e.key)}
-      onKeyUp={() => setKey("")}
-    >
-      <Title head="RO \../" />
-      <div id="buttons-container">
-        <RenderButtons
-          on={on}
-          keyPressed={key}
-          list={list}
-          element={fetchURL}
-        />
+    <div className={styles.outerCont}>
+      <a id={styles.a} href="/">
+        {home}
+      </a>
+      <div
+        id={styles.drumMachine}
+        onKeyDown={(e) => setKey(e.key)}
+        onKeyUp={() => setKey("")}
+      >
+        <Title head="RO \../" />
+        <div id={styles.buttonsContainer}>
+          <RenderButtons
+            on={on}
+            keyPressed={key}
+            list={list}
+            element={fetchURL}
+          />
+        </div>
+        <label id={styles.label}>POWER</label>
+        <button
+          id={on ? styles.toggleOn : styles.toogleOff}
+          onClick={() => switchHandler()}
+        >
+          <div id={styles.switch}></div>
+        </button>
+        <div id={styles.display}>{name}</div>
       </div>
-      <label id="label">POWER</label>
-      <button onClick={() => setOn(!on)} id={on ? "toggle-on" : "toogle-off"}>
-        <div id="switch"></div>
-      </button>
-      <div id="display">{name}</div>
     </div>
   );
 };
@@ -71,7 +86,7 @@ type TitleProps = {
 };
 
 const Title = ({ head }: TitleProps) => {
-  return <div id="head-right">{head}</div>;
+  return <div id={styles.headRight}>{head}</div>;
 };
 
 type OBJ = {
@@ -110,9 +125,9 @@ const RenderButtons = ({
           disabled={!on}
           key={key}
           onClick={() => playAudio(key)}
-          className="drum-pad"
+          className={styles.drumPad}
         >
-          <audio id={key} className="clip">
+          <audio id={key} className={styles.clip}>
             <source src={elem[key]} />
           </audio>
           {key}

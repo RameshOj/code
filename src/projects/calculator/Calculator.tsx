@@ -1,5 +1,5 @@
 import { MouseEventHandler, useEffect, useState } from "react";
-import "./Calculator.css";
+import styles from "./Calculator.module.css";
 const Calculator = () => {
   const [arr, setArr] = useState<string[]>([]);
   const [num, setNum] = useState<string>("");
@@ -72,20 +72,34 @@ const Calculator = () => {
     }
   };
 
+  const home = `< Home`;
+
   return (
-    <div id="calculator-container">
-      <div id="calculator">
-        <div id="displayCont">
-          <div id="display" className="que">
-            {display}
+    <>
+      <a id={styles.a} href="/">
+        {home}
+      </a>
+      <div id={styles.calculatorContainer}>
+        <center>
+          <h2 className={styles.headText}>
+            This is basic calculator, here after equating one calculation we
+            need to All Clear- AC. Then only we can do next calculation. This
+            calculator follows Formula/Expression Logic.
+          </h2>
+        </center>
+        <div id={styles.calculator}>
+          <div id={styles.displayCont}>
+            <div id={styles.display} className={styles.que}>
+              {display}
+            </div>
+            <div id={styles.display} className={styles.result}>
+              {result}
+            </div>
           </div>
-          <div id="display" className="result">
-            {result}
-          </div>
+          <Buttons buttonClickHandler={clickHandler} />
         </div>
-        <Buttons buttonClickHandler={clickHandler} />
       </div>
-    </div>
+    </>
   );
 };
 
@@ -114,7 +128,7 @@ const Buttons = (props: ButtonsProp) => {
     { id: "decimal", variant: "num", text: "." },
   ];
   return (
-    <div id="buttons">
+    <div id={styles.buttons}>
       {list.map((elem) => {
         return (
           <Button
@@ -138,7 +152,11 @@ type ButtonProps = {
 
 const Button = (props: ButtonProps) => {
   return (
-    <button id={props.id} className={props.variant} onClick={props.onClick}>
+    <button
+      id={styles[props.id]}
+      className={styles[props.variant]}
+      onClick={props.onClick}
+    >
       {props.text}
     </button>
   );

@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#nav {
+  height: 100vh;
+  width: 100vW;
+  overflow: hidden;
+  background-color: orange;
+}
+
+#headText {
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: -60px;
+  padding: 10px 50px;
+  color: aliceblue;
+}
+
+#ul {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  list-style-type: square;
+}
+
+
+#ul>li {
+  padding: 20px 2px;
+}
+
+#ul>li>a {
+  font-size: 24px;
+  text-decoration: none;
+  color: white;
+}

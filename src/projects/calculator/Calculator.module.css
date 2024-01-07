@@ -1,13 +1,21 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-#calculator-container {
+#calculatorContainer {
   width: 100vw;
   height: 100vh;
   background-color: rgb(173, 170, 170);
-  padding-top: 100px;
+  padding-top: 40px;
+}
+
+#a {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.headText {
+ padding: 40px;
 }
 
 #calculator {

@@ -1,18 +1,30 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
 #container {
-    background-color: green;
+    background-color: rgb(1, 174, 1);
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     text-align: center;
+    justify-content: center;
 }
 
-#inner-container {
+#a {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.headText {
+    color: aliceblue;
+    padding: 50px;
+    word-spacing: 6px;
+}
+
+#innerContainer {
     margin:0 auto;
     width: 300px;
 }
@@ -23,19 +35,19 @@
     padding: 10px;
 }
 
-#length-container {
+#lengthContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-#break-label, #session-label, #break-length , #session-length, #timer-label {
+#breakLabel, #sessionLabel, #breakLength , #sessionLength, #timerLabel {
     font-size: 22px;
     color: aliceblue;
     padding: 6px;
 }
 
-#break-decrement, #break-increment, #session-decrement, #session-increment {
+#breakDecrement, #breakIncrement, #sessionDecrement, #sessionIncrement {
     height: 25px;
     width: 25px;
     background-color: white;
@@ -44,9 +56,10 @@
     font-weight: 900;
     outline: none;
     border: none;
+    padding-bottom: 32px;
 }
 
-#session-box {
+#sessionBox {
     width: 140px;
     height: 100px;
     border: 4px solid gray;
@@ -54,12 +67,12 @@
     margin: 20px auto;
 }
 
-#time-left {
+#timeLeft {
     font-size: 40px;
     color: aliceblue;
 }
 
-#start_stop, #reset {
+#startStop, #reset {
    padding: 4px 8px;
    font-weight: 600;
    margin: 8px;
