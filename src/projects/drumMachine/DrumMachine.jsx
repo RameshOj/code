@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./DrumMachine.module.css";
 
-const list: Array<OBJ> = [
+const list = [
   { Q: "https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3" },
   { W: "https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3" },
   { E: "https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3" },
@@ -15,9 +15,9 @@ const list: Array<OBJ> = [
 
 const DrumMachine = () => {
   const [on, setOn] = useState(false);
-  const [key, setKey] = useState<string>("");
-  const [url, setUrl] = useState<string>("");
-  const [name, setName] = useState<string>("");
+  const [key, setKey] = useState("");
+  const [url, setUrl] = useState("");
+  const [name, setName] = useState("");
 
   useEffect(() => {
     if (url) {
@@ -28,7 +28,7 @@ const DrumMachine = () => {
     }
   }, [url]);
 
-  const fetchURL = (elem: string) => {
+  const fetchURL = (elem) => {
     list.map((obj) => {
       let object;
       Object.keys(obj).map((key) => {
@@ -81,23 +81,8 @@ const DrumMachine = () => {
   );
 };
 
-type TitleProps = {
-  head: string;
-};
-
-const Title = ({ head }: TitleProps) => {
+const Title = ({ head }) => {
   return <div id={styles.headRight}>{head}</div>;
-};
-
-type OBJ = {
-  [key: string]: string;
-};
-
-type RenderButtonProps = {
-  list: Array<OBJ>;
-  on: boolean;
-  keyPressed: string;
-  element: CallableFunction;
 };
 
 const RenderButtons = ({
@@ -105,20 +90,21 @@ const RenderButtons = ({
   on,
   keyPressed,
   element,
-}: RenderButtonProps) => {
+}) => {
   useEffect(() => {
     if (on && keyPressed) {
       playAudio(keyPressed.toUpperCase());
     }
   }, [on, keyPressed]);
-  const playAudio = (el: string) => {
-    const elem: HTMLMediaElement = document.getElementById(el);
+  const playAudio = (el) => {
+    const elem =
+      document.getElementById(el);
     if (elem?.play) {
       elem.play();
       element(el);
     }
   };
-  return list.map((elem: OBJ) => {
+  return list.map((elem) => {
     return Object.keys(elem).map((key) => {
       return (
         <button

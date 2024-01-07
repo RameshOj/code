@@ -20,7 +20,7 @@ const TwentyFivePlusFive = () => {
           isSessionEnded ? sessionLength * 60 : breakSessionLength * 60
         );
         setSessionEnded((val) => !val);
-        const elem: HTMLMediaElement = document.getElementById("beep");
+        const elem = document.getElementById("beep");
         if (elem?.play) {
           elem.play();
         }
@@ -33,7 +33,7 @@ const TwentyFivePlusFive = () => {
     } else {
       clearInterval(myInterval.current);
       myInterval.current = null;
-      const elem: HTMLMediaElement = document.getElementById("beep");
+      const elem = document.getElementById("beep");
       if (elem?.pause) {
         elem.pause();
       }
@@ -44,7 +44,7 @@ const TwentyFivePlusFive = () => {
     };
   }, [isStarted, hoursTimer, minsTimer]);
 
-  const formatTime = (number: number) => {
+  const formatTime = (number) => {
     if (!(number % 60)) return "00";
     if ((number % 60).toString().length === 1) {
       return "0" + (number % 60);
@@ -52,7 +52,7 @@ const TwentyFivePlusFive = () => {
     return number % 60;
   };
 
-  const incDecHandler = (type: string, oprtn: string) => {
+  const incDecHandler = (type, oprtn) => {
     if (type === "break") {
       if (oprtn === "dec") {
         if (breakSessionLength === 0) return;

@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./QuoteMachine.module.css";
-import { Link } from "react-router-dom";
 
 class QuoteMachine extends React.Component {
   constructor() {
