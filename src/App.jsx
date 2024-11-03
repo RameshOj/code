@@ -5,6 +5,7 @@ import DrumMachine from "./projects/drumMachine/DrumMachine";
 import Calculator from "./projects/calculator/Calculator";
 import QuoteMachine from "./projects/quoteMachine/QuoteMachine";
 import TwentyFivePlusFive from "./projects/twentyFivePlusFive/TwentyFivePlusFive";
+import Form from "./projects/form/Form";
 
 import styles from "./App.module.css";
 
@@ -33,6 +34,9 @@ const Home = () => {
         <li>
           <Link to="/timeClock">Time Clock</Link>
         </li>
+        <li>
+          <Link to="/form">Form</Link>
+        </li>
       </ul>
     </nav>
   );
@@ -49,6 +53,7 @@ function App() {
           <Route path="/markdown" Component={Markdown} />
           <Route path="/calculator" Component={Calculator} />
           <Route path="/timeClock" Component={TwentyFivePlusFive} />
+          <Route path="/form" Component={Form} />
         </Routes>
       </Router>
     </div>
