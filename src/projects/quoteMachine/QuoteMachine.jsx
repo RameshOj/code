@@ -41,18 +41,18 @@ class QuoteMachine extends React.Component {
   }
 
   fetchQuotes = async () => {
-    const response = await fetch("https://type.fit/api/quotes", {
+    const response = await fetch("https://dummyjson.com/quotes", {
       method: "GET",
       mode: "cors",
       cache: "default",
     });
 
     const data = await response.json();
-    const smallData = data.slice(0, 99);
+    console.log({ data });
 
     this.setState({
       ...this.state,
-      quotes: [...smallData],
+      quotes: [...data.quotes],
     });
   };
 
@@ -84,7 +84,7 @@ class QuoteMachine extends React.Component {
     const data = { ...allQuotes[quotesCount] };
     const result = (
       <>
-        <div id={styles.text}>"{data.text}"</div>
+        <div id={styles.text}>"{data.quote}"</div>
         <div id={styles.footer}>
           <button
             style={{ backgroundColor: `${this.colors[colorCount]}` }}
