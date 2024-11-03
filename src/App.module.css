@@ -10,13 +10,17 @@
   background-color: orange;
 }
 
+.test {
+  width: 80%;
+}
+
 #headText {
   width: 100%;
   align-items: center;
   text-align: center;
   margin-top: 60px;
   margin-bottom: -60px;
-  padding: 10px 50px;
+  padding: 10px 0;
   color: aliceblue;
 }
 

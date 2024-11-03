@@ -12,12 +12,16 @@ import styles from "./App.module.css";
 const Home = () => {
   return (
     <nav id={styles.nav}>
-      <h2 id={styles.headText}>
-        This project is made only for educational purpose.
-      </h2>
-      <h2 id={styles.headText}>
-        Click on the below links to have a peek into it.
-      </h2>
+      <center>
+        <div className={styles.test}>
+          <h2 id={styles.headText}>
+            This project is made only for educational purpose.
+          </h2>
+          <h2 id={styles.headText}>
+            Click on the below links to have a peek into it.
+          </h2>
+        </div>
+      </center>
       <ul id={styles.ul}>
         <li>
           <Link to="/quoteMachine">Quote Machine</Link>
