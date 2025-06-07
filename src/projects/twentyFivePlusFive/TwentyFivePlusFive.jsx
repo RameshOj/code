@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./TwentyFivePlusFive.module.css";
+import mp3 from "./Doraemon.mp3";
 
 const TwentyFivePlusFive = () => {
   const [sessionLength, setSessionlength] = useState(25);
@@ -8,8 +9,9 @@ const TwentyFivePlusFive = () => {
   const [minsTimer, setMinsTimer] = useState(sessionLength * 60);
   const [isStarted, setIsStarted] = useState(false);
   const [isSessionEnded, setSessionEnded] = useState(false);
-  // let timer: ReturnType<typeof setInterval>;
+
   const myInterval = useRef();
+
   useEffect(() => {
     if (isStarted) {
       if (hoursTimer === 0 && minsTimer % 60 === 0) {
@@ -20,7 +22,7 @@ const TwentyFivePlusFive = () => {
           isSessionEnded ? sessionLength * 60 : breakSessionLength * 60
         );
         setSessionEnded((val) => !val);
-        const elem = document.getElementById("beep");
+        const elem = document.getElementById("dora");
         if (elem?.play) {
           elem.play();
         }
@@ -33,7 +35,7 @@ const TwentyFivePlusFive = () => {
     } else {
       clearInterval(myInterval.current);
       myInterval.current = null;
-      const elem = document.getElementById("beep");
+      const elem = document.getElementById("dora");
       if (elem?.pause) {
         elem.pause();
       }
@@ -147,8 +149,8 @@ const TwentyFivePlusFive = () => {
           <button id={styles.reset} onClick={() => resetHandler()}>
             Reset
           </button>
-          <audio id={styles.beep}>
-            <source src="https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3" />
+          <audio id="dora">
+            <source src={mp3} />
           </audio>
         </div>
       </div>
