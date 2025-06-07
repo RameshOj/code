@@ -19,7 +19,7 @@ const Calculator = () => {
     if (oprtn === "/") {
       res = (Number(arr[prevIndx]) / Number(arr[nextIndx])).toString();
       console.log(res, " res");
-    } else if (oprtn === "X") {
+    } else if (oprtn === "x") {
       res = (Number(arr[prevIndx]) * Number(arr[nextIndx])).toString();
       console.log(res, " res");
     } else if (oprtn === "+") {
@@ -42,8 +42,8 @@ const Calculator = () => {
     }
     if (arr.includes("/")) {
       calculator("/");
-    } else if (arr.includes("X")) {
-      calculator("X");
+    } else if (arr.includes("x")) {
+      calculator("x");
     } else if (arr.includes("+")) {
       calculator("+");
     } else if (arr.includes("-")) {
@@ -111,7 +111,7 @@ const Buttons = (props: ButtonsProp) => {
   const list = [
     { id: "clear", variant: "red", text: "AC" },
     { id: "divide", variant: "calc", text: "/" },
-    { id: "multiply", variant: "calc", text: "X" },
+    { id: "multiply", variant: "calc", text: "x" },
     { id: "seven", variant: "num", text: "7" },
     { id: "eight", variant: "num", text: "8" },
     { id: "nine", variant: "num", text: "9" },
