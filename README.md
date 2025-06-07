@@ -1,6 +1,8 @@
-# React + TypeScript + Vite
+# This project is only suitable for PC and Big Screen Size Devices. As responsivness will be implemented in future version.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# React + Vite
+
+This projecct provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
 
