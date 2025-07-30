@@ -36,9 +36,6 @@ const Home = () => {
         <li>
           <Link to="/timeClock">{MESSAGE_CONSTANTS.TIME_CLOCK}</Link>
         </li>
-        <li>
-          <Link to="/form">{MESSAGE_CONSTANTS.FORM}</Link>
-        </li>
       </ul>
     </nav>
   );
