@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./DrumMachine.module.css";
-
+// mp3 files for the drum sounds from s3 bucket
 const list = [
   { Q: "https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3" },
   { W: "https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3" },
@@ -12,13 +12,19 @@ const list = [
   { X: "https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3" },
   { C: "https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3" },
 ];
-
+// DrumMachine component that renders a drum machine interface
+// It allows users to play sounds by clicking buttons or pressing keys.
 const DrumMachine = () => {
+  // State variables to manage the on/off state, key pressed, URL of the sound, and name of the sound
+  // The name is derived from the URL to display the currently playing sound
   const [on, setOn] = useState(false);
   const [key, setKey] = useState("");
   const [url, setUrl] = useState("");
   const [name, setName] = useState("");
 
+  // Effect hook to set the name based on the URL when it changes
+  // It splits the URL to extract the last part, which is used as the name of the sound
+  // This is done to display the name of the sound currently being played
   useEffect(() => {
     if (url) {
       const splittedURL = url.split("/");
@@ -28,6 +34,8 @@ const DrumMachine = () => {
     }
   }, [url]);
 
+  // Function to fetch the URL of the sound based on the button pressed or key pressed
+  // It iterates through the list of sounds and sets the URL state with the corresponding sound
   const fetchURL = (elem) => {
     list.map((obj) => {
       let object;
@@ -41,14 +49,16 @@ const DrumMachine = () => {
       }
     });
   };
-
+  // Function to handle the switch toggle for turning the drum machine on or off
+  // It toggles the on state and resets the name to an empty string
   const switchHandler = () => {
     setOn(!on);
     setName("");
   };
 
   const home = `< Home`;
-
+  // Render method to display the drum machine interface
+  // It includes a title, buttons for each drum sound, a toggle switch for power,
   return (
     <div className={styles.outerCont}>
       <a id={styles.a} href="/">
@@ -81,29 +91,32 @@ const DrumMachine = () => {
   );
 };
 
+// Title component to display the title of the drum machine
+// It takes a prop 'head' to display the title text
 const Title = ({ head }) => {
   return <div id={styles.headRight}>{head}</div>;
 };
 
-const RenderButtons = ({
-  list,
-  on,
-  keyPressed,
-  element,
-}) => {
+// RenderButtons component to render the drum sound buttons
+// It maps through the list of sounds and creates a button for each sound
+const RenderButtons = ({ list, on, keyPressed, element }) => {
   useEffect(() => {
     if (on && keyPressed) {
       playAudio(keyPressed.toUpperCase());
     }
   }, [on, keyPressed]);
   const playAudio = (el) => {
-    const elem =
-      document.getElementById(el);
+    const elem = document.getElementById(el);
+    // If the audio element exists and is not paused, play the sound
+    // It also calls the element function to fetch the URL of the sound
     if (elem?.play) {
       elem.play();
       element(el);
     }
   };
+
+  // Map through the list of sounds and create buttons for each sound
+  // Each button has an onClick handler to play the sound when clicked
   return list.map((elem) => {
     return Object.keys(elem).map((key) => {
       return (

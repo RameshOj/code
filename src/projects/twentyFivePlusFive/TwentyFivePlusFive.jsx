@@ -2,7 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./TwentyFivePlusFive.module.css";
 import mp3 from "./Doraemon.mp3";
 
+// TwentyFivePlusFive component that implements a productivity timer
+// It allows users to set a 25-minute work session followed by a 5-minute break
 const TwentyFivePlusFive = () => {
+  // State variables to manage session length, break session length, timer values, and flags for start/stop and session end
+  // It uses useState to manage the state of the timer and session lengths
   const [sessionLength, setSessionlength] = useState(25);
   const [breakSessionLength, setBreakSessionlength] = useState(5);
   const [hoursTimer, setHoursTimer] = useState(sessionLength * 60);
@@ -10,8 +14,12 @@ const TwentyFivePlusFive = () => {
   const [isStarted, setIsStarted] = useState(false);
   const [isSessionEnded, setSessionEnded] = useState(false);
 
+  // useRef to hold the interval ID for the timer
+  // This allows us to clear the interval when the component unmounts or when the timer is stopped
   const myInterval = useRef();
 
+  // useEffect hook to manage the timer logic
+  // It starts the timer when isStarted is true and updates the timer values every second
   useEffect(() => {
     if (isStarted) {
       if (hoursTimer === 0 && minsTimer % 60 === 0) {
@@ -46,6 +54,8 @@ const TwentyFivePlusFive = () => {
     };
   }, [isStarted, hoursTimer, minsTimer]);
 
+  // Function to format the time in MM:SS format
+  // It ensures that the minutes and seconds are always two digits
   const formatTime = (number) => {
     if (!(number % 60)) return "00";
     if ((number % 60).toString().length === 1) {
@@ -54,6 +64,9 @@ const TwentyFivePlusFive = () => {
     return number % 60;
   };
 
+  // Function to handle incrementing or decrementing the session or break length
+  // It updates the state based on the type (break or session) and the operation (inc or dec)
+  // It ensures that the session length and break length do not go below zero
   const incDecHandler = (type, oprtn) => {
     if (type === "break") {
       if (oprtn === "dec") {
@@ -74,10 +87,14 @@ const TwentyFivePlusFive = () => {
     }
   };
 
+  // Function to start or stop the timer
+  // It toggles the isStarted state to start or stop the timer
   const startStopTimer = () => {
     setIsStarted(!isStarted);
   };
 
+  // Function to reset the timer and session lengths to their initial values
+  // It sets the session length to 25 minutes and break length to 5 minutes
   const resetHandler = () => {
     setSessionlength(25);
     setBreakSessionlength(5);
@@ -88,6 +105,7 @@ const TwentyFivePlusFive = () => {
 
   const home = `< Home`;
 
+  // Render method to display the TwentyFivePlusFive component
   return (
     <>
       <a id={styles.a} href="/">

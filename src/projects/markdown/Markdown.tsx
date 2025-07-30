@@ -1,7 +1,10 @@
 import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
 import styles from "./Markdown.module.css";
 import { marked } from "marked";
+// This component allows users to write markdown text and see the preview in real-time
 
+// Initial text to be displayed in the editor
+// This text contains various markdown elements like headings, code blocks, lists, etc.
 const initialText = `# Welcome to my React Markdown Previewer!
 
 ## This is a sub-heading...
@@ -48,15 +51,22 @@ And here. | Okay. | I think we get it.
 
 `;
 
+// Main Markdown component
+// It contains the editor for writing markdown and a preview section to see the rendered output
 const Markdown = () => {
   const [textValue, setTextValue] = useState<string>(initialText);
 
+  // Change handler for the textarea to update the textValue state
+  // This function is called whenever the user types in the editor
   const changeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setTextValue(e.target.value);
   };
 
   const home = `< Home`;
 
+  // Render method to display the Markdown component
+  // It includes a link to go back home, the editor for writing markdown, and the preview section
+  // The editor allows users to type markdown text, and the preview section shows the rendered HTML
   return (
     <>
       <a id={styles.a} href="/">
@@ -70,13 +80,19 @@ const Markdown = () => {
   );
 };
 
+// Smiley and pray symbols to be used in the header
+// These symbols are displayed in the header of the editor and preview sections
 const smiley = "(*_*)";
 const pray = "_/\\_";
 
+// Header component to display the title of the editor or preview section
+// It takes a prop 'title' to display the title text
 type HeaderProps = {
   title: string;
 };
 
+// Header component to display the title of the editor or preview section
+// It takes a prop 'title' to display the title text
 const Header = ({ title }: HeaderProps) => {
   return (
     <div className={styles.headerContainer}>
@@ -88,11 +104,15 @@ const Header = ({ title }: HeaderProps) => {
   );
 };
 
+// Editor component to render the markdown editor
+// It contains a textarea for users to write markdown text
 type EditorProps = {
   value: string;
   onChange: ChangeEventHandler<HTMLTextAreaElement>;
 };
 
+// Editor component to render the markdown editor
+// It contains a textarea for users to write markdown text
 const Editor = ({ value, onChange }: EditorProps) => {
   return (
     <div className={styles.editorContainer}>
@@ -102,10 +122,14 @@ const Editor = ({ value, onChange }: EditorProps) => {
   );
 };
 
+// Preview component to render the markdown preview
+// It takes the markdown text as a prop and renders it as HTML
 type PreviewProps = {
   toModifyData: string;
 };
 
+// Preview component to render the markdown preview
+// It takes the markdown text as a prop and renders it as HTML
 const Preview = ({ toModifyData }: PreviewProps) => {
   const [data, setData] = useState<string>("");
   const dataModifier = (data: string) => {
@@ -113,11 +137,15 @@ const Preview = ({ toModifyData }: PreviewProps) => {
     return modifiedData;
   };
 
+  // Effect hook to modify the markdown data when the toModifyData changes
+  // It uses the marked library to parse the markdown text into HTML
   useEffect(() => {
     const dataModified = dataModifier(toModifyData);
     setData(dataModified);
   }, [toModifyData]);
 
+  // Render method to display the Preview component
+  // It includes a header and a div to show the rendered HTML
   return (
     <div className={styles.previewContainer}>
       <Header title="Preview" />

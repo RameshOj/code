@@ -5,47 +5,47 @@ import DrumMachine from "./projects/drumMachine/DrumMachine";
 import Calculator from "./projects/calculator/Calculator";
 import QuoteMachine from "./projects/quoteMachine/QuoteMachine";
 import TwentyFivePlusFive from "./projects/twentyFivePlusFive/TwentyFivePlusFive";
-import Form from "./projects/form/Form";
 
 import styles from "./App.module.css";
+import { MESSAGE_CONSTANTS } from "./utils/messageConstants";
 
+// Home component to display the navigation links rendering at "/" route
+// and a message about the educational purpose of the project.
 const Home = () => {
   return (
     <nav id={styles.nav}>
       <center>
         <div className={styles.test}>
-          <h2 id={styles.headText}>
-            This project is made only for educational purpose.
-          </h2>
-          <h2 id={styles.headText}>
-            Click on the below links to have a peek into it.
-          </h2>
+          <h2 id={styles.headText}>{MESSAGE_CONSTANTS.EDUCATIONAL_PURPOSE}</h2>
+          <h2 id={styles.headText}>{MESSAGE_CONSTANTS.LINK_CLICK_MSG}</h2>
         </div>
       </center>
       <ul id={styles.ul}>
         <li>
-          <Link to="/quoteMachine">Quote Machine</Link>
+          <Link to="/quoteMachine">{MESSAGE_CONSTANTS.QUOTE_MACHINE}</Link>
         </li>
         <li>
-          <Link to="/drumMachine">Drum Machine</Link>
+          <Link to="/drumMachine">{MESSAGE_CONSTANTS.DRUM_MACHINE}</Link>
         </li>
         <li>
-          <Link to="/markdown">Markdown</Link>
+          <Link to="/markdown">{MESSAGE_CONSTANTS.MARKDOWN}</Link>
         </li>
         <li>
-          <Link to="/calculator">Calculator</Link>
+          <Link to="/calculator">{MESSAGE_CONSTANTS.CALCULATOR}</Link>
         </li>
         <li>
-          <Link to="/timeClock">Time Clock</Link>
+          <Link to="/timeClock">{MESSAGE_CONSTANTS.TIME_CLOCK}</Link>
         </li>
         <li>
-          <Link to="/form">Form</Link>
+          <Link to="/form">{MESSAGE_CONSTANTS.FORM}</Link>
         </li>
       </ul>
     </nav>
   );
 };
 
+// Main App component that sets up the router and routes for the application.
+// It includes the Home component and routes to other project components.
 function App() {
   return (
     <div>
@@ -57,7 +57,6 @@ function App() {
           <Route path="/markdown" Component={Markdown} />
           <Route path="/calculator" Component={Calculator} />
           <Route path="/timeClock" Component={TwentyFivePlusFive} />
-          <Route path="/form" Component={Form} />
         </Routes>
       </Router>
     </div>

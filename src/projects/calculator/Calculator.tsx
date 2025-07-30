@@ -1,33 +1,40 @@
 import { MouseEventHandler, useEffect, useState } from "react";
 import styles from "./Calculator.module.css";
+
+// file for the Calculator component
 const Calculator = () => {
+  // State variables to manage the calculator's input, display, and result
+  // 'arr' holds the numbers and operators entered by the user
   const [arr, setArr] = useState<string[]>([]);
   const [num, setNum] = useState<string>("");
   const [display, setDisplay] = useState<string>("");
   const [result, setResult] = useState<number>(0);
   const [flag, setFlag] = useState<boolean>(false);
 
+  // Effect hook to trigger the calculation when the 'arr' changes
+  // It checks if the 'flag' is true, indicating that an equal operation was requested
   useEffect(() => {
     if (flag) equaliserFunc();
   }, [arr.length, flag]);
 
+  // Function to perform the calculation based on the operator passed
+  // It finds the index of the operator in the 'arr', calculates the result based on the previous and next numbers,
+  // and updates the 'arr' with the new result
   const calculator = (oprtn: string) => {
+    // Find the index of the operator in the array
     const indx = arr.indexOf(oprtn);
     const prevIndx = indx - 1;
     const nextIndx = indx + 1;
     let res = "";
+
     if (oprtn === "/") {
       res = (Number(arr[prevIndx]) / Number(arr[nextIndx])).toString();
-      console.log(res, " res");
     } else if (oprtn === "x") {
       res = (Number(arr[prevIndx]) * Number(arr[nextIndx])).toString();
-      console.log(res, " res");
     } else if (oprtn === "+") {
       res = (Number(arr[prevIndx]) + Number(arr[nextIndx])).toString();
-      console.log(res, " res");
     } else if (oprtn === "-") {
       res = (Number(arr[prevIndx]) - Number(arr[nextIndx])).toString();
-      console.log(res, " res");
     }
     const prevArr = arr.slice(0, prevIndx);
     const nextArr = arr.slice(nextIndx + 1, arr.length);
@@ -35,6 +42,8 @@ const Calculator = () => {
     return;
   };
 
+  // Function to handle the equal operation
+  // It checks if the 'arr' has only one element or if it contains an operator
   const equaliserFunc = (): void => {
     if (arr.length === 1 && arr.length % 2 !== 0) {
       setResult(JSON.parse(arr[0]));
@@ -51,6 +60,8 @@ const Calculator = () => {
     }
   };
 
+  // Function to handle button clicks
+  // It updates the display and arr based on the button clicked
   const clickHandler = (butn: string, variant: string) => {
     setDisplay(display + butn);
     if (butn === "=") {
@@ -73,7 +84,8 @@ const Calculator = () => {
   };
 
   const home = `< Home`;
-
+  // Render method to display the Calculator component
+  // It includes a link to go back home, the display for the current input and result
   return (
     <>
       <a id={styles.a} href="/">
@@ -103,11 +115,16 @@ const Calculator = () => {
   );
 };
 
+// Buttons component props type definition
+// It takes a function to handle button clicks as a prop
 type ButtonsProp = {
   buttonClickHandler: CallableFunction;
 };
 
+// Buttons component to render the calculator buttons
 const Buttons = (props: ButtonsProp) => {
+  // List of buttons with their ids, variants, and text
+  // Each button has a unique id, a variant for styling, and the text to display
   const list = [
     { id: "clear", variant: "red", text: "AC" },
     { id: "divide", variant: "calc", text: "/" },
@@ -127,6 +144,9 @@ const Buttons = (props: ButtonsProp) => {
     { id: "zero", variant: "num-big", text: "0" },
     { id: "decimal", variant: "num", text: "." },
   ];
+
+  // Render method to display the buttons
+  // It maps through the list of buttons and creates a Button component for each
   return (
     <div id={styles.buttons}>
       {list.map((elem) => {
@@ -143,6 +163,8 @@ const Buttons = (props: ButtonsProp) => {
   );
 };
 
+// Button component props type definition
+// It takes an id, variant, text, and a click handler function as props
 type ButtonProps = {
   id: string;
   variant: string;
@@ -150,6 +172,7 @@ type ButtonProps = {
   onClick: MouseEventHandler<HTMLButtonElement>;
 };
 
+// Button component to render a single button
 const Button = (props: ButtonProps) => {
   return (
     <button

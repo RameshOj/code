@@ -1,5 +1,5 @@
 #container {
-    background-color: rgb(1, 174, 1);
+    background-color: rgb(1, 148, 1);
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -7,15 +7,18 @@
     align-items: center;
     text-align: center;
     justify-content: center;
+    position: fixed;
 }
 
 #a {
-    position: absolute;
+    position: fixed;
     top: 8px;
     left: 8px;
     font-size: 18px;
     text-decoration: none;
     font-weight: 800;
+    z-index: 12;
+    color: black;
 }
 
 .headText {

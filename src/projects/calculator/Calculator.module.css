@@ -3,6 +3,7 @@
   height: 100vh;
   background-color: rgb(173, 170, 170);
   padding-top: 40px;
+  position: fixed;
 }
 
 #a {
@@ -12,6 +13,9 @@
   font-size: 18px;
   text-decoration: none;
   font-weight: 800;
+  z-index: 12;
+  position: fixed;
+  color: blue;
 }
 
 .headText {
