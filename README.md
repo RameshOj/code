@@ -2,7 +2,7 @@
 
 # React + Vite
 
-This projecct provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
 
